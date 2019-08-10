@@ -1,7 +1,8 @@
-﻿using ResumeData;
+﻿using Microsoft.EntityFrameworkCore;
+using ResumeData;
 using ResumeData.Models;
-using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ResumeServices
 {
@@ -14,54 +15,83 @@ namespace ResumeServices
             _context = context;
         }
 
-        public void Add(Project newProject)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void AddPictureToProject(int projectId, string link)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void AddTagToProject(int projectId, int tagId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void AddVideoToProject(int projectId, string link)
-        {
-            throw new NotImplementedException();
-        }
-
         public Project Get(int projectId)
         {
-            throw new NotImplementedException();
+            return GetAll().FirstOrDefault(x => x.Id == projectId);
         }
 
         public IEnumerable<Project> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.Projects
+                .Include(p => p.Pictures)
+                .Include(p => p.Tags);
+        }
+
+        public void Add(Project newProject)
+        {
+            _context.Add(newProject);
+            _context.SaveChanges();
+        }
+
+        public void AddPictureToProject(int projectId, Picture picture)
+        {
+            Project curProject = Get(projectId);
+            curProject.Pictures.Concat(new[] { picture });
+
+            _context.Update(curProject);
+            _context.SaveChanges();
+        }
+
+        public void AddTagToProject(int projectId, int tagId)
+        {
+            Project curProject = Get(projectId);
+
+            Tag tagForAdding = _context.Tags.FirstOrDefault(x => x.Id == tagId);
+
+            curProject.Tags.Concat(new[] { tagForAdding });
+            _context.Update(curProject);
+            _context.SaveChanges();
+        }
+
+        public void AddVideoToProject(int projectId, Video newVideo)
+        {
+            Project curProject = Get(projectId);
+            curProject.ProjectVideo = newVideo;
+            _context.Update(curProject);
+            _context.SaveChanges();
         }
 
         public void Remove(int projectId)
         {
-            throw new NotImplementedException();
+            Project remProject = Get(projectId);
+            _context.Remove(remProject);
+            _context.SaveChanges();
         }
 
-        public void RemovePictureFromProject(int projectId, int picNum)
+        public void RemovePictureFromProject(int projectId, Picture remPic)
         {
-            throw new NotImplementedException();
+            Project curProject = Get(projectId);
+            curProject.Pictures = curProject.Pictures.Where(x => x != remPic);
+            _context.Update(curProject);
+            _context.SaveChanges();
         }
 
         public void RemoveTagFromProject(int projectId, string tagName)
         {
-            throw new NotImplementedException();
+            Project curProject = Get(projectId);
+            curProject.Tags = curProject.Tags.Where(x => x.TagName != tagName);
+            _context.Update(curProject);
+            _context.SaveChanges();
         }
 
         public void RemoveVideoFromProject(int projectId)
         {
-            throw new NotImplementedException();
+            Project curProject = Get(projectId);
+            curProject.ProjectVideo = null;
+            _context.Update(curProject);
+            _context.SaveChanges();
         }
+
+
     }
 }

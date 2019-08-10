@@ -1,7 +1,5 @@
 ﻿using ResumeData.Models;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace ResumeData
 {
@@ -10,9 +8,9 @@ namespace ResumeData
         User Get(int userId);
         IEnumerable<User> GetAll();
 
-        void ChangePass(int userId);
-        void ChangeEmail(int userId);
-        void ChangeRole(byte roleN);
+        void ChangePass(int userId, string newPass);
+        void ChangeEmail(int userId, string newEmail);
+        void ChangeRole(int userId, byte newRole);
 
         void Add(User newUser);
     }

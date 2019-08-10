@@ -9,13 +9,13 @@ namespace ResumeData
         IEnumerable<Project> GetAll();
 
         void AddTagToProject(int projectId, int tagId);
-        void AddVideoToProject(int projectId, string link);
-        void AddPictureToProject(int projectId, string link);
+        void AddVideoToProject(int projectId, Video newVideo);
+        void AddPictureToProject(int projectId, Picture newPic);
         void Add(Project newProject);
 
         void Remove(int projectId);
         void RemoveVideoFromProject(int projectId);
-        void RemovePictureFromProject(int projectId, int picNum);//?
+        void RemovePictureFromProject(int projectId, Picture remPic);//?
         void RemoveTagFromProject(int projectId, string tagName);//?
     }
 }

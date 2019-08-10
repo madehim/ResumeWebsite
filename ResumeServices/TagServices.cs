@@ -1,8 +1,7 @@
 ﻿using ResumeData;
 using ResumeData.Models;
-using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 
 namespace ResumeServices
 {
@@ -17,22 +16,35 @@ namespace ResumeServices
 
         public void Add(Tag newTag)
         {
-            throw new NotImplementedException();
+            _contex.Add(newTag);
+            _contex.SaveChanges();
         }
 
         public Tag Get(int tagId)
         {
-            throw new NotImplementedException();
+            return GetAll().FirstOrDefault(x => x.Id == tagId);
         }
 
         public IEnumerable<Tag> GetAll()
         {
-            throw new NotImplementedException();
+            return _contex.Tags;
         }
+
 
         public void Remove(string tagName)
         {
-            throw new NotImplementedException();
+            Tag remTag = GetByName(tagName);
+            if (remTag != null)
+            {
+                _contex.Remove(remTag);
+                _contex.SaveChanges();
+            }
+
+        }
+
+        public Tag GetByName(string tagName)
+        {
+            return _contex.Tags.FirstOrDefault(x => x.TagName == tagName);
         }
     }
 }
