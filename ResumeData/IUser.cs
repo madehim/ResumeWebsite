@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ResumeData
 {
-    interface IUser
+    public interface IUser
     {
         User Get(int userId);
         IEnumerable<User> GetAll();

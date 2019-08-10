@@ -20,5 +20,6 @@ namespace ResumeData.Models
         public string UserName { get; set; }
         [Required]
         public byte Role { get; set; }
+        public string Salt { get; set; }
     }
 }
