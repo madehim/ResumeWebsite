@@ -1,8 +1,8 @@
 ﻿
 @font-face {
     font-family: 'OldStyleFonts';
-    src: url('PxPlus_IBM_BIOS.ttf') format('woff'), /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-    url('PxPlus_IBM_BIOS.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+    src: url('PxPlus_IBM_VGA8.ttf') format('woff'), /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    url('PxPlus_IBM_VGA8.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
 }
 
 
@@ -11,7 +11,6 @@ for details on configuring this project to bundle and minify static web assets. 
 body {
     padding-top: 50px;
     padding-bottom: 20px;
-    background-color: black;
     font-family: OldStyleFonts;
 }
 

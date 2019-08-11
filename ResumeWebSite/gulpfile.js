@@ -1,4 +1,5 @@
-﻿"use strict";
+/// <binding BeforeBuild='sass' />
+"use strict";
 
 var gulp = require("gulp"),
     rimraf = require("rimraf"),
