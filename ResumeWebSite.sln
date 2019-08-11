@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29020.237
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResumeWebSite", "ResumeWebSite\ResumeWebSite.csproj", "{72582ADC-4EC3-41C4-BBD7-9ED0AAB080E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResumeWebSite", "ResumeWebSite\ResumeWebSite.csproj", "{72582ADC-4EC3-41C4-BBD7-9ED0AAB080E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResumeData", "ResumeData\ResumeData.csproj", "{4CFC96A7-E2BE-452E-8B6F-3623F6E28A86}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResumeData", "ResumeData\ResumeData.csproj", "{4CFC96A7-E2BE-452E-8B6F-3623F6E28A86}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResumeServices", "ResumeServices\ResumeServices.csproj", "{8FCEDE68-8B05-4E8C-931E-A7B8E7F76075}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResumeServices", "ResumeServices\ResumeServices.csproj", "{8FCEDE68-8B05-4E8C-931E-A7B8E7F76075}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

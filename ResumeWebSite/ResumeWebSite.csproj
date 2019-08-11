@@ -15,10 +15,4 @@
     <ProjectReference Include="..\ResumeServices\ResumeServices.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
-    <Folder Include="Views\Home\" />
-  </ItemGroup>
-
 </Project>
