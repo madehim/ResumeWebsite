@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ResumeData;
+using ResumeServices;
 
 namespace ResumeWebSite
 {
@@ -36,6 +37,9 @@ namespace ResumeWebSite
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddSingleton(Configuration);
+            services.AddScoped<IProject, ProjectServices>();
+            services.AddScoped<ITag, TagServices>();
+            services.AddScoped<IUser, UserServices>();
 
             services.AddDbContext<ResumeContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("ResumeConnection")));

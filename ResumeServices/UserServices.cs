@@ -5,7 +5,7 @@ using ResumeData.Models;
 
 namespace ResumeServices
 {
-    class UserServices : IUser
+    public class UserServices : IUser
     {
         private ResumeContext _context;
 

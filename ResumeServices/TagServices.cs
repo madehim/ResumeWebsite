@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace ResumeServices
 {
-    class TagServices : ITag
+    public class TagServices : ITag
     {
         private ResumeContext _contex;
 
