@@ -1,1 +1,27 @@
-﻿
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="stylesheet" href="~/css/site.min.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/all.min.css" />
+</head>
+<body>
+    <nav id="navbar">
+        <ul>
+            <li><a>Главная</a></li>
+            <li><a>Проекты</a></li>
+        </ul>
+    </nav>
+    <content id="content">
+        @RenderBody()
+    </content>
+    <footer id="footer">
+        <ul>
+            <li><a>GitHub</a></li>
+            <li><a>Skype</a></li>
+            <li><a>Email</a></li>
+            <li><a>Mobile</a></li>
+        </ul>
+    </footer>
+</body>
+</html>

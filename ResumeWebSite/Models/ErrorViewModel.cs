@@ -1,6 +1,6 @@
 using System;
 
-namespace TestIdentity.Models
+namespace ResumeWebSite.Models
 {
     public class ErrorViewModel
     {
