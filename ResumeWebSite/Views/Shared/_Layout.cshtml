@@ -8,8 +8,9 @@
 <body>
     <nav id="navbar">
         <ul>
-            <li><a href="#">Главная</a></li>
-            <li><a href="#">Проекты</a></li>
+            <li><a asp-controller="Home" asp-action="Index">Главная</a></li>
+            <li><a asp-controller="Home" asp-action="About">Обо мне</a></li>
+            <li><a asp-controller="Project" asp-action="Index">Проекты</a></li>
         </ul>
     </nav>
     <main id="content">

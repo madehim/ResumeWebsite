@@ -15,18 +15,21 @@
 
 body {
   color: #ffff3f;
-  background-color: #0000af; }
+  background-color: #0000af;
+  position: relative;
+  min-height: 95vh; }
   body #content {
-    margin-top: 50px;
-    margin-bottom: 30px; }
+    margin-top: 50px; }
   body #navbar {
     position: fixed;
     top: 0;
     width: 100%;
     display: block; }
-    body #navbar ul li {
-      padding: 0 20px;
-      float: right; }
+    body #navbar ul {
+      padding: 0 5%; }
+      body #navbar ul li {
+        padding: 0 2%;
+        float: right; }
   body #footer, body #navbar {
     color: #000000;
     background-color: #acacac; }
@@ -38,6 +41,10 @@ body {
       background-color: #c70000; }
       body #footer ul > li:hover a, body #navbar ul > li:hover a {
         color: #ffff3f; }
-  body #footer ul li {
-    padding: 0 20px;
-    display: inline-block; }
+  body #footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%; }
+    body #footer ul li {
+      padding: 0 20px;
+      display: inline-block; }

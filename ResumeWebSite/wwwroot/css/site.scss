@@ -29,10 +29,13 @@ $green-color: #00ff3f;
 body {
     color: $yellow-color;
     background-color: $blue-color;
+    position: relative;
+    min-height: 95vh;
+
+
 
     #content {
         margin-top: 50px;
-        margin-bottom: 30px;
     }
 
     #navbar {
@@ -42,9 +45,10 @@ body {
         display: block;
 
         ul {
+            padding: 0 5%;
 
             li {
-                padding: 0 20px;
+                padding: 0 2%;
                 float: right;
             }
         }
@@ -75,6 +79,10 @@ body {
     }
 
     #footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+
         ul {
             li {
                 padding: 0 20px;
@@ -82,7 +90,4 @@ body {
             }
         }
     }
-}
-
-#homeIndex {
 }
