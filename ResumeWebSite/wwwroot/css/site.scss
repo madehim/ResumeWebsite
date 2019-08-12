@@ -36,6 +36,7 @@ body {
 
     #content {
         margin-top: 50px;
+        padding-bottom: 50px;
     }
 
     #navbar {
@@ -90,4 +91,63 @@ body {
             }
         }
     }
+}
+
+#homeAbout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50vw;
+    margin: auto;
+    flex-direction: column;
+
+    div {
+        font-size: 0.9em;
+        width: 100%;
+
+        h2 {
+            color: $aqua-color;
+            padding: 10px 0;
+            text-align: left;
+        }
+
+        h3 {
+            color: $white-color;
+            padding: 15px 0;
+            text-align: left;
+            font-size: 1em;
+        }
+
+        p {
+            padding: 5px 0;
+            text-align: left;
+            font-size: 0.9em;
+
+            a {
+                font-size: 1em;
+                color: $yellow-color;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    #homeAbout {
+        width: 75vw;
+    }
+}
+
+@media screen and (max-width: 750px) {
+
+    #homeAbout {
+        width: 95vw;
+    }
+
+    #footer, #navbar {
+        font-size: 0.9em;
+    }
+}
+
+.link-in-text:hover {
+    background-color: $red-color;
 }
