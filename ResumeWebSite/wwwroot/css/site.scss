@@ -18,6 +18,7 @@ $green-color: #00ff3f;
 * {
     padding: 0;
     margin: 0;
+    border: none;
     outline: none;
     text-decoration: none;
     font-size: 1.1em;
@@ -131,6 +132,48 @@ body {
     }
 }
 
+#homeIndex {
+    #title {
+        height: 40vh;
+    }
+
+    #projectsWindow {
+        background-color: $aqua-color;
+        width: 80%;
+        margin: auto;
+
+        a {
+            input {
+                border: 2px solid $black-color;
+                padding: 5px;
+                margin: 40px 0 20px 0;
+                cursor: pointer;
+                background-color: $grey-color;
+            }
+        }
+    }
+
+    h1 {
+        padding: 40px 0;
+        color: $red-color;
+    }
+
+    h3 {
+        padding: 20px 0;
+        font-size: 1em;
+        color: $white-color;
+    }
+
+    p {
+        padding: 10px 0;
+        font-size: 0.9em;
+    }
+
+    a {
+        color: $yellow-color;
+    }
+}
+
 @media screen and (max-width: 1000px) {
     #homeAbout {
         width: 75vw;
@@ -145,6 +188,35 @@ body {
 
     #footer, #navbar {
         font-size: 0.9em;
+    }
+
+    #homeIndex {
+
+        #title {
+            height: 25vh;
+        }
+
+        #projectsWindow {
+            width: 100%;
+
+            a {
+                input {
+                    margin: 20px 0 10px 0;
+                }
+            }
+        }
+
+        h1 {
+            padding: 20px 0;
+        }
+
+        h3 {
+            padding: 10px 0;
+        }
+
+        p {
+            padding: 5px 0;
+        }
     }
 }
 

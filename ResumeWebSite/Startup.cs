@@ -43,6 +43,7 @@ namespace ResumeWebSite
 
             services.AddDbContext<ResumeContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("ResumeConnection")));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

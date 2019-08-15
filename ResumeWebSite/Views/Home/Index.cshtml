@@ -1,15 +1,21 @@
-﻿
+﻿@{
+    ViewBag.Title = "Главная";
+}
+
+
 <div id="homeIndex">
     <div id="title">
-        <div>name</div>
+        <h1>Привет, я Дмитрий</h1>
+        <h3>Начинающий разработчик</h3>
     </div>
-    <div id="projectWindow">
-        <div>
-            Project Container
-            <div>Project1</div>
-            <div>Project2</div>
-            <div>Project3</div>
+    <div id="projectsWindow">
+        <h3>Мои проекты</h3>
+        <div id="projectsMain">
+            <!--Razor here-->
+            <div class="project-container">Project1</div>
+            <div class="project-container">Project2</div>
+            <div class="project-container">Project3</div>
         </div>
-        <div>linkToAllProject</div>
+        <a href="/project" class="link-in-text"><input type="button" value="Посмотреть все" /></a>
     </div>
 </div>

@@ -7,6 +7,7 @@
 * {
   padding: 0;
   margin: 0;
+  border: none;
   outline: none;
   text-decoration: none;
   font-size: 1.1em;
@@ -77,6 +78,36 @@ body {
         font-size: 1em;
         color: #ffff3f; }
 
+#homeIndex #title {
+  height: 40vh; }
+
+#homeIndex #projectsWindow {
+  background-color: #00acac;
+  width: 80%;
+  margin: auto; }
+  #homeIndex #projectsWindow a input {
+    border: 2px solid #000000;
+    padding: 5px;
+    margin: 40px 0 20px 0;
+    cursor: pointer;
+    background-color: #acacac; }
+
+#homeIndex h1 {
+  padding: 40px 0;
+  color: #c70000; }
+
+#homeIndex h3 {
+  padding: 20px 0;
+  font-size: 1em;
+  color: #ffffff; }
+
+#homeIndex p {
+  padding: 10px 0;
+  font-size: 0.9em; }
+
+#homeIndex a {
+  color: #ffff3f; }
+
 @media screen and (max-width: 1000px) {
   #homeAbout {
     width: 75vw; } }
@@ -85,7 +116,19 @@ body {
   #homeAbout {
     width: 95vw; }
   #footer, #navbar {
-    font-size: 0.9em; } }
+    font-size: 0.9em; }
+  #homeIndex #title {
+    height: 25vh; }
+  #homeIndex #projectsWindow {
+    width: 100%; }
+    #homeIndex #projectsWindow a input {
+      margin: 20px 0 10px 0; }
+  #homeIndex h1 {
+    padding: 20px 0; }
+  #homeIndex h3 {
+    padding: 10px 0; }
+  #homeIndex p {
+    padding: 5px 0; } }
 
 .link-in-text:hover {
   background-color: #c70000; }
