@@ -48,8 +48,9 @@ namespace ResumeServices
                     allIndexList.RemoveAt(rValue);
                 }
 
-                for (int i = 0; i < retIndexList.Count; i++)
-                    three = three.Union(all.Where(x => x.Id == retIndexList[i]));
+
+                for (int i = 0; i < retIndexList.Count; i++)//dont work
+                    three = all.Where(x => retIndexList.Contains(x.Id));
 
                 return three;
             }

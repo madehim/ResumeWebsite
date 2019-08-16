@@ -1,10 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ResumeData;
 using ResumeWebSite.Models.Project;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace ResumeWebSite.Controllers
 {
@@ -35,9 +32,9 @@ namespace ResumeWebSite.Controllers
             return View(model);
         }
 
-        public IActionResult Detail(int prId)
+        public IActionResult Detail(int id)
         {
-            var project = _project.Get(prId);
+            var project = _project.Get(id);
 
             var model = new ProjectDetailModel
             {
