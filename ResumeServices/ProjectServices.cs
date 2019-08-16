@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ResumeData;
 using ResumeData.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -25,6 +26,35 @@ namespace ResumeServices
             return _context.Projects
                 .Include(p => p.Pictures)
                 .Include(p => p.Tags);
+        }
+
+        public IEnumerable<Project> GetThreeOrLess()
+        {
+            var all = GetAll();
+            if (all.Count() >= 3)
+            {
+                Random rnd = new Random(DateTime.UtcNow.Millisecond);
+                IEnumerable<Project> three = null;
+
+                List<int> allIndexList = new List<int>(all.Count());
+                for (int i = 0; i < all.Count(); i++)
+                    allIndexList.Add(i + 1);
+
+                List<int> retIndexList = new List<int>(3);
+                for (int i = 0; i < 3; i++)
+                {
+                    int rValue = rnd.Next(0, allIndexList.Count - 1);
+                    retIndexList.Add(allIndexList[rValue]);
+                    allIndexList.RemoveAt(rValue);
+                }
+
+                for (int i = 0; i < retIndexList.Count; i++)
+                    three = three.Union(all.Where(x => x.Id == retIndexList[i]));
+
+                return three;
+            }
+            else
+                return all;
         }
 
         public void Add(Project newProject)

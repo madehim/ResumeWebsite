@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ResumeData;
+using ResumeWebSite.Models.Project;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,19 +10,31 @@ namespace ResumeWebSite.Controllers
 {
     public class HomeController : Controller
     {
-        private ITag _tag;
         private IProject _project;
 
-        public HomeController(ITag tag, IProject project)
+        public HomeController(IProject project)
         {
-            _tag = tag;
             _project = project;
         }
 
 
         public IActionResult Index()
         {
-            return View();
+            var projects = _project.GetThreeOrLess()
+                .Select(project => new ProjectDetailModel
+                {
+                    Id = project.Id,
+                    ProjectName = project.ProjectName,
+                    Pictures = project.Pictures,
+                    Tags = project.Tags
+                });
+
+            var model = new ProjectIndexModel()
+            {
+                Projects = projects
+            };
+
+            return View(model);
         }
 
         public IActionResult About()

@@ -7,6 +7,7 @@ namespace ResumeData
     {
         Project Get(int projectId);
         IEnumerable<Project> GetAll();
+        IEnumerable<Project> GetThreeOrLess();
 
         void AddTagToProject(int projectId, int tagId);
         void AddVideoToProject(int projectId, Video newVideo);
