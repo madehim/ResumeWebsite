@@ -220,6 +220,61 @@ body {
     }
 }
 
+.link-in-text {
+    color: $red-color;
+}
+
 .link-in-text:hover {
     background-color: $red-color;
+}
+
+
+.projects-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 80%;
+    padding: 10px 0;
+    margin: auto;
+
+    .project-container {
+        width: 380px;
+        height: 500px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        background-color: $blue-color;
+        font-size: 0.8em;
+        margin: 5px;
+
+
+        .project-preview {
+            img {
+                width: 350px;
+                height: 300px;
+                object-fit: scale-down;
+            }
+        }
+
+        .project-tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+
+
+
+            a {
+                margin: 5px;
+                background-color: $grey-color;
+                border: 1px solid $black-color;
+                font-size: 0.9em;
+                padding: 2px;
+                display: block;
+            }
+        }
+    }
 }

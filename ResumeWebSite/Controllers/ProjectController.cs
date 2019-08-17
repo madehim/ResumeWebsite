@@ -49,5 +49,23 @@ namespace ResumeWebSite.Controllers
             return View(model);
         }
 
+        public IActionResult Tag()
+        {
+            var projects = _project.GetAll()
+                .Select(project => new ProjectDetailModel
+                {
+                    Id = project.Id,
+                    ProjectName = project.ProjectName,
+                    Pictures = project.Pictures,
+                    Tags = project.Tags
+                });
+
+            var model = new ProjectIndexModel()
+            {
+                Projects = projects
+            };
+            return View(model);
+        }
+
     }
 }
