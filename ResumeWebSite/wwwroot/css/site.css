@@ -75,8 +75,7 @@ body {
       text-align: left;
       font-size: 0.9em; }
       #homeAbout div p a {
-        font-size: 1em;
-        color: #ffff3f; }
+        font-size: 1em; }
 
 #homeIndex #title {
   height: 40vh; }
@@ -108,6 +107,11 @@ body {
 #homeIndex a {
   color: #ffff3f; }
 
+#projectIndex .projects-container {
+  background-color: #00acac; }
+  #projectIndex .projects-container a {
+    color: #ffff3f; }
+
 @media screen and (max-width: 1000px) {
   #homeAbout {
     width: 75vw; } }
@@ -128,13 +132,29 @@ body {
   #homeIndex h3 {
     padding: 10px 0; }
   #homeIndex p {
-    padding: 5px 0; } }
+    padding: 5px 0; }
+  #projectIndex .projects-container {
+    width: 90%; }
+    #projectIndex .projects-container .project-container {
+      width: 90%;
+      height: auto;
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding: 0 0 0 5px; }
+      #projectIndex .projects-container .project-container h5 {
+        text-align: start; }
+      #projectIndex .projects-container .project-container .project-preview {
+        display: none; }
+      #projectIndex .projects-container .project-container .project-tags-container {
+        justify-content: flex-start;
+        align-items: flex-start; } }
 
 .link-in-text {
   color: #c70000; }
 
 .link-in-text:hover {
-  background-color: #c70000; }
+  background-color: #c70000;
+  color: #ffff3f; }
 
 .projects-container {
   display: flex;

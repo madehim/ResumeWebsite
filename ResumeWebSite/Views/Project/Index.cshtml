@@ -2,3 +2,37 @@
 @{
     ViewBag.Title = "Проекты";
 }
+
+
+<div id="projectIndex">
+    <div class="projects-container">
+        @foreach (var project in Model.Projects)
+        {
+            <div class="project-container">
+                @{var linkToProject = "/project/detail/" + project.Id;}
+                <a href="@linkToProject">
+                    <h5>@project.ProjectName</h5>
+                    <div class="project-preview">
+                        @{
+                            var picture = project.Pictures.FirstOrDefault();
+                            if (picture != null)
+                            {
+                                <img src="@picture.Link " alt="@project.ProjectName" />
+                            }
+                        }
+                    </div>
+                </a>
+                @if (project.Tags != null)
+                {
+                    <div class="project-tags-container">
+                        @foreach (var tag in project.Tags)
+                        {
+                            var byTagLink = "/project/tag/" + @tag.TagName;
+                            <a href="@byTagLink"><span>@tag.TagName</span></a>
+                        }
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</div>

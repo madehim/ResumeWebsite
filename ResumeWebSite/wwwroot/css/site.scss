@@ -126,7 +126,6 @@ body {
 
             a {
                 font-size: 1em;
-                color: $yellow-color;
             }
         }
     }
@@ -174,6 +173,17 @@ body {
     }
 }
 
+#projectIndex {
+
+    .projects-container {
+        background-color: $aqua-color;
+
+        a {
+            color: $yellow-color;
+        }
+    }
+}
+
 @media screen and (max-width: 1000px) {
     #homeAbout {
         width: 75vw;
@@ -218,6 +228,34 @@ body {
             padding: 5px 0;
         }
     }
+
+    #projectIndex {
+        .projects-container {
+            width: 90%;
+
+            .project-container {
+                width: 90%;
+                height: auto;
+                justify-content: flex-start;
+                align-items: flex-start;
+                padding: 0 0 0 5px;
+
+
+                h5 {
+                    text-align: start;
+                }
+
+                .project-preview {
+                    display: none;
+                }
+
+                .project-tags-container {
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                }
+            }
+        }
+    }
 }
 
 .link-in-text {
@@ -226,6 +264,7 @@ body {
 
 .link-in-text:hover {
     background-color: $red-color;
+    color: $yellow-color;
 }
 
 
