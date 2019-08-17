@@ -35,7 +35,15 @@
                         <div class="project-tags-container">
                             @foreach (var tag in project.Tags)
                             {
-                                var byTagLink = "/project/tag/" + @tag.TagName;
+                                var byTagLink = "";
+                                if (tag.TagName != "C#")
+                                {
+                                    byTagLink = "/project/tag/" + @tag.TagName;
+                                }
+                                else
+                                {
+                                    byTagLink = "/project/tag/CSharp";
+                                }
                                 <a href="@byTagLink"><span>@tag.TagName</span></a>
                             }
                         </div>

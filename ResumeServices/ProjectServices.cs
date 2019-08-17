@@ -58,6 +58,14 @@ namespace ResumeServices
                 return all;
         }
 
+        public IEnumerable<Project> GetAllByTag(string tag)
+        {
+            var projectsId = _context.Tags.Where(x => x.TagName == tag);
+
+            return GetAll()
+                .Where(x => x.Tags.Any(y => projectsId.Contains(y)));
+        }
+
         public void Add(Project newProject)
         {
             _context.Add(newProject);

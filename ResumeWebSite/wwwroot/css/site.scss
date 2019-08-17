@@ -188,6 +188,34 @@ body {
     #homeAbout {
         width: 75vw;
     }
+
+    #projectIndex {
+        .projects-container {
+            width: 90%;
+
+            .project-container {
+                width: 90%;
+                height: auto;
+                justify-content: flex-start;
+                align-items: flex-start;
+                padding: 0 0 0 5px;
+
+
+                h5 {
+                    text-align: start;
+                }
+
+                .project-preview {
+                    display: none;
+                }
+
+                .project-tags-container {
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                }
+            }
+        }
+    }
 }
 
 @media screen and (max-width: 750px) {
@@ -226,34 +254,6 @@ body {
 
         p {
             padding: 5px 0;
-        }
-    }
-
-    #projectIndex {
-        .projects-container {
-            width: 90%;
-
-            .project-container {
-                width: 90%;
-                height: auto;
-                justify-content: flex-start;
-                align-items: flex-start;
-                padding: 0 0 0 5px;
-
-
-                h5 {
-                    text-align: start;
-                }
-
-                .project-preview {
-                    display: none;
-                }
-
-                .project-tags-container {
-                    justify-content: flex-start;
-                    align-items: flex-start;
-                }
-            }
         }
     }
 }

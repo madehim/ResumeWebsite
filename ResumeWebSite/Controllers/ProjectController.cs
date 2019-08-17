@@ -49,9 +49,11 @@ namespace ResumeWebSite.Controllers
             return View(model);
         }
 
-        public IActionResult Tag()
+        public IActionResult Tag(string id)
         {
-            var projects = _project.GetAll()
+            if (id == "CSharp")
+                id = "C#";
+            var projects = _project.GetAllByTag(id)
                 .Select(project => new ProjectDetailModel
                 {
                     Id = project.Id,
@@ -64,6 +66,8 @@ namespace ResumeWebSite.Controllers
             {
                 Projects = projects
             };
+
+            ViewBag.Tag = id;
             return View(model);
         }
 
