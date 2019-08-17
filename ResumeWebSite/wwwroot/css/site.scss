@@ -332,6 +332,15 @@ body {
     }
 }
 
+#adminLogin {
+}
+
+#adminRegistration {
+}
+
+#adminIndex {
+}
+
 @media screen and (max-width: 1000px) {
     #homeAbout {
         width: 75vw;
@@ -462,4 +471,9 @@ body {
             }
         }
     }
+}
+
+.change-font {
+    font-family: serif;
+    color: black;
 }

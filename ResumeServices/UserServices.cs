@@ -14,6 +14,11 @@ namespace ResumeServices
             _context = context;
         }
 
+        public User GetByLogin(string login)
+        {
+            return GetAll().FirstOrDefault(x => x.Login == login);
+        }
+
         public void Add(User newUser)
         {
             _context.Add(newUser);

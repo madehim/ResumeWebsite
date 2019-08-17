@@ -289,3 +289,7 @@ body {
         font-size: 0.9em;
         padding: 2px;
         display: block; }
+
+.change-font {
+  font-family: serif;
+  color: black; }

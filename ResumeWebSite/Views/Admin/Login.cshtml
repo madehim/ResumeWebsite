@@ -1,0 +1,26 @@
+﻿@model ResumeWebSite.Models.Admin.AdminLoginModel
+
+<div id="adminLogin" class="change-font">
+    <form asp-action="Login" asp-controller="Admin" asp-anti-forgery="true">
+        <div asp-validation-summary="ModelOnly" />
+        <div>
+            <div>
+                <label asp-for="Login">Введите логин</label>
+                <input type="text" asp-for="Login" />
+                <span asp-validation-for="Login" />
+            </div>
+            <div>
+                <label asp-for="Password">Введите пароль</label>
+                <input asp-for="Password" />
+                <span asp-validation-for="Password" />
+            </div>
+            <div>
+                <input type="submit" value="Войти" />
+            </div>
+        </div>
+    </form>
+    @if (@ViewBag.RegLink)
+    {
+        <a href="/admin/registration">Регистрация</a>
+    }
+</div>

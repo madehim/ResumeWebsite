@@ -1,10 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ResumeData.Models
+namespace ResumeWebSite.Models.Admin
 {
-    public class User
+    public class AdminRegistrationModel
     {
-        public int Id { get; set; }
         [Required]
         [EmailAddress]
         public string Email { get; set; }
@@ -14,8 +13,5 @@ namespace ResumeData.Models
         [Required]
         [MinLength(6, ErrorMessage = "Your password must contains at least 6 characters")]
         public string Password { get; set; }
-        [Required]
-        public byte Role { get; set; }
-        public string Salt { get; set; }
     }
 }

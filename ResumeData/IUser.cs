@@ -5,6 +5,7 @@ namespace ResumeData
 {
     public interface IUser
     {
+        User GetByLogin(string login);
         User Get(int userId);
         IEnumerable<User> GetAll();
 

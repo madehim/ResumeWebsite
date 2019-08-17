@@ -11,6 +11,11 @@
 <body>
     <nav id="navbar">
         <ul>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <li><a asp-controller="Admin" asp-action="Logout">Выход</a></li>
+                <li><a asp-controller="Admin" asp-action="Index">Админка</a></li>
+            }
             <li><a asp-controller="Home" asp-action="Index">Главная</a></li>
             <li><a asp-controller="Home" asp-action="About">Обо мне</a></li>
             <li><a asp-controller="Project" asp-action="Index">Проекты</a></li>
