@@ -3,3 +3,40 @@
 @{
     ViewBag.Title = Model.ProjectName;
 }
+<div id="projectDetail">
+    <h3>@Model.ProjectName</h3>
+    @if (Model.Pictures.Count() != 0)
+    {
+        <div class="slideshow-container">
+            @foreach (var picture in Model.Pictures)
+            {
+                <div class="mySlides fade">
+                    <img src="@picture.Link" alt="@Model.ProjectName" />
+                </div>
+            }
+            @if (Model.Pictures.Count() != 1)
+            {
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            }
+        </div>
+    }
+    <p>@Model.ProjectDescription</p>
+    <div class="project-tags-container">
+        @foreach (var tag in Model.Tags)
+        {
+            var byTagLink = "";
+            if (tag.TagName != "C#")
+            {
+                byTagLink = "/project/tag/" + @tag.TagName;
+            }
+            else
+            {
+                byTagLink = "/project/tag/CSharp";
+            }
+            <a href="@byTagLink">@tag.TagName</a>
+        }
+    </div>
+    <a href="@Model.ProjectGitHubLink"><i class="fab fa-github">Проект на гитхабе</i></a>
+</div>
+<script type="text/javascript" src="~/js/SliderScript.js"></script>

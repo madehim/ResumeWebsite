@@ -38,7 +38,6 @@ namespace ResumeWebSite.Controllers
 
             var model = new ProjectDetailModel
             {
-                Id = project.Id,
                 ProjectName = project.ProjectName,
                 ProjectDescription = project.ProjectDescription,
                 Pictures = project.Pictures,
