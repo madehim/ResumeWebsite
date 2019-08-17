@@ -2,3 +2,47 @@
 @{
     ViewBag.Title = ViewBag.Tag;
 }
+
+<div id="projectTag">
+    <h3>Проекты по тэгу @ViewBag.Tag</h3>
+    <div class="project-container-changable">
+        <div class="projects-container">
+            @foreach (var project in Model.Projects)
+            {
+                <div class="project-container">
+                    @{var linkToProject = "/project/detail/" + project.Id;}
+                    <a href="@linkToProject">
+                        <h5>@project.ProjectName</h5>
+                        <div class="project-preview">
+                            @{
+                                var picture = project.Pictures.FirstOrDefault();
+                                if (picture != null)
+                                {
+                                    <img src="@picture.Link " alt="@project.ProjectName" />
+                                }
+                            }
+                        </div>
+                    </a>
+                    @if (project.Tags != null)
+                    {
+                        <div class="project-tags-container">
+                            @foreach (var tag in project.Tags)
+                            {
+                                var byTagLink = "";
+                                if (tag.TagName != "C#")
+                                {
+                                    byTagLink = "/project/tag/" + @tag.TagName;
+                                }
+                                else
+                                {
+                                    byTagLink = "/project/tag/CSharp";
+                                }
+                                <a href="@byTagLink"><span>@tag.TagName</span></a>
+                            }
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</div>

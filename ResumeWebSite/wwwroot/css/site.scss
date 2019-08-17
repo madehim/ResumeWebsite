@@ -184,12 +184,27 @@ body {
     }
 }
 
+#projectTag {
+    h3 {
+        margin-bottom: 10px;
+        font-size: 1.1em;
+    }
+
+    .projects-container {
+        background-color: $aqua-color;
+
+        a {
+            color: $yellow-color;
+        }
+    }
+}
+
 @media screen and (max-width: 1000px) {
     #homeAbout {
         width: 75vw;
     }
 
-    #projectIndex {
+    .project-container-changable {
         .projects-container {
             width: 90%;
 
