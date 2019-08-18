@@ -8,11 +8,34 @@
     <div id="rightPart">
         <h3>Добавление/удаление/изменение</h3>
         <form method="post">
-            <input type="text" placeholder="Имя" />
-            <textarea placeholder="Описание"></textarea>
-            <input type="url" placeholder="Ссылка на гитхаб" />
-            <textarea placeholder="Тэги"></textarea>
-            <textarea placeholder="Картинки (ссылки на них)"></textarea>
+            @if (Model != null)
+            {
+                string tags = "";
+                foreach (var tag in Model.Tags)
+                {
+                    tags += tag.TagName + ",";
+                }
+                string pics = "";
+                foreach (var pic in Model.Pictures)
+                {
+                    pics += pic.Link + ",";
+                }
+
+                <input type="text" placeholder="Имя" value="@Model.ProjectName" />
+                <textarea placeholder="Описание">@Model.ProjectDescription</textarea>
+                <input type="url" placeholder="Ссылка на гитхаб" value="@Model.ProjectGitHubLink" />
+                <textarea placeholder="Тэги">@tags</textarea>
+                <textarea placeholder="Картинки (ссылки на них)">@pics</textarea>
+            }
+            else
+            {
+                <input type="text" placeholder="Имя" />
+                <textarea placeholder="Описание"></textarea>
+                <input type="url" placeholder="Ссылка на гитхаб" />
+                <textarea placeholder="Тэги"></textarea>
+                <textarea placeholder="Картинки (ссылки на них)"></textarea>
+            }
+
             <div class="buttonBlock">
                 <button type="submit" value="Добавить">Добавить</button>
                 <button type="submit" value="Изменить">Изменить</button>
@@ -20,8 +43,8 @@
             </div>
         </form>
         <h3>Заполнить выбранным проектом из списка</h3>
-        <form method="get">
-            <input type="text" placeholder="Id" />
+        <form method="get" asp-action="Index" asp-controller="Admin">
+            <input type="text" placeholder="Id" asp-for="Id" />
             <button type="submit">Заполнить</button>
         </form>
     </div>

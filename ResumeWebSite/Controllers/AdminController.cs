@@ -41,9 +41,28 @@ namespace ResumeWebSite.Controllers
 
         [Authorize]
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Index(int id)
         {
+            if (id != 0)
+            {
+                var project = _project.Get(id);
+                if (project != null)
+                {
+                    var model = new ProjectDetailModel
+                    {
+                        Id = project.Id,
+                        ProjectName = project.ProjectName,
+                        ProjectDescription = project.ProjectDescription,
+                        ProjectGitHubLink = project.ProjectGitHubLink,
+                        Pictures = project.Pictures,
+                        Tags = project.Tags
+                    };
+
+                    return View(model);
+                }
+            }
             return View();
+
         }
 
         [Authorize]
