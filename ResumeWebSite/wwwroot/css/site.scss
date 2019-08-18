@@ -332,13 +332,28 @@ body {
     }
 }
 
-#adminLogin {
+#adminLogin, #adminRegistration {
+    color: $black-color;
+
+    * {
+        font-family: sans-serif;
+    }
+
+    form {
+        padding-bottom: 20px;
+
+        div {
+            padding: 10px 0;
+        }
+    }
 }
 
-#adminRegistration {
-}
+
 
 #adminIndex {
+    * {
+        font-family: sans-serif;
+    }
 }
 
 @media screen and (max-width: 1000px) {
@@ -471,9 +486,4 @@ body {
             }
         }
     }
-}
-
-.change-font {
-    font-family: serif;
-    color: black;
 }

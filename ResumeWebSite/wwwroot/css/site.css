@@ -210,6 +210,15 @@ body {
       padding: 2px;
       display: block; }
 
+#adminLogin, #adminRegistration {
+  color: #000000; }
+  #adminLogin *, #adminRegistration * {
+    font-family: sans-serif; }
+  #adminLogin form, #adminRegistration form {
+    padding-bottom: 20px; }
+    #adminLogin form div, #adminRegistration form div {
+      padding: 10px 0; }
+
 @media screen and (max-width: 1000px) {
   #homeAbout {
     width: 75vw; }
@@ -289,7 +298,3 @@ body {
         font-size: 0.9em;
         padding: 2px;
         display: block; }
-
-.change-font {
-  font-family: serif;
-  color: black; }
