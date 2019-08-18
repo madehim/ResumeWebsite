@@ -90,7 +90,7 @@ namespace ResumeWebSite.Controllers
         public IActionResult Change(ProjectAdminModel projectAdminModel)
         {
             _project.Change(ToResumeDataProject(projectAdminModel, false));
-            return LocalRedirect("/admin");
+            return LocalRedirect("/admin/index/" + projectAdminModel.Id);
         }
         [Authorize]
         [HttpPost]
@@ -193,8 +193,8 @@ namespace ResumeWebSite.Controllers
 
         private Project ToResumeDataProject(ProjectAdminModel projectAdminModel, bool isAdd)
         {
-            string[] tagsFromPrAd = projectAdminModel.Tags.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-            string[] picsFromPrAd = projectAdminModel.Pictures.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+            string[] tagsFromPrAd = projectAdminModel.Tags.Split(new char[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries).Distinct().ToArray();
+            string[] picsFromPrAd = projectAdminModel.Pictures.Split(new char[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries).Distinct().ToArray();
             List<Tag> tags = new List<Tag>(tagsFromPrAd.Length);
             List<Picture> pics = new List<Picture>(picsFromPrAd.Length);
 
