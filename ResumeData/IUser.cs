@@ -14,5 +14,7 @@ namespace ResumeData
         void ChangeRole(int userId, byte newRole);
 
         void Add(User newUser);
+        void Registration(string login, string email, string pass);
+        bool Login(User user, string pass);
     }
 }

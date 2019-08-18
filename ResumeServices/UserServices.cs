@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using ResumeData;
 using ResumeData.Models;
 
@@ -23,6 +26,36 @@ namespace ResumeServices
         {
             _context.Add(newUser);
             _context.SaveChanges();
+        }
+
+        public void Registration(string login, string email, string password)
+        {
+            byte[] salt = new byte[128 / 8];
+            using (var rng = RandomNumberGenerator.Create())
+            {
+                rng.GetBytes(salt);
+            }
+            string stringSalt = Convert.ToBase64String(salt);
+
+            string hashed = Hashing(salt, password);
+
+            Add(new User
+            {
+                Email = email,
+                Login = login,
+                Password = hashed,
+                Salt = stringSalt,
+                Role = 1
+            });
+        }
+
+        public bool Login(User user, string pass)
+        {
+            byte[] salt = Convert.FromBase64String(user.Salt);
+
+            if (user.Password == Hashing(salt, pass))
+                return true;
+            return false;
         }
 
         public User Get(int userId)
@@ -63,6 +96,16 @@ namespace ResumeServices
                 userForUpdate.Role = newRole;
                 _context.SaveChanges();
             }
+        }
+
+        private string Hashing(byte[] salt, string password)
+        {
+            return Convert.ToBase64String(KeyDerivation.Pbkdf2(
+                        password: password,
+                        salt: salt,
+                        prf: KeyDerivationPrf.HMACSHA1,
+                        iterationCount: 10000,
+                        numBytesRequested: 256 / 8));
         }
     }
 }

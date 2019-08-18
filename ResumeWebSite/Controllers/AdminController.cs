@@ -57,16 +57,11 @@ namespace ResumeWebSite.Controllers
                 var user = _user.GetByLogin(model.Login);
                 if (user != null)
                 {
-                    byte[] salt = Convert.FromBase64String(user.Salt);
-
-                    string hashed = Hashing(salt, model.Password);
-
-                    if (hashed == user.Password)
+                    if (_user.Login(user, model.Password))
                     {
                         await AuthenticateAsync(model.Login); // аутентификация
                         return RedirectToAction("Index", "Admin");
                     }
-
                 }
                 ModelState.AddModelError("", "Некорректные логин и(или) пароль");
             }
@@ -85,30 +80,8 @@ namespace ResumeWebSite.Controllers
 
                 if (user == null)
                 {
-                    // хеширование
-                    byte[] salt = new byte[128 / 8];
-                    using (var rng = RandomNumberGenerator.Create())
-                    {
-                        rng.GetBytes(salt);
-                    }
-                    string stringSalt = Convert.ToBase64String(salt);
-
-                    string hashed = Hashing(salt, model.Password);
-
-                    // добавляем пользователя в бд
-                    model.Password = hashed;
-                    _user.Add(new ResumeData.Models.User
-                    {
-                        Email = model.Email,
-                        Login = model.Login,
-                        Password = model.Password,
-                        Salt = stringSalt,
-                        Role = 1
-                    });
-
-
+                    _user.Registration(model.Login, model.Email, model.Password);
                     await AuthenticateAsync(model.Login); // аутентификация
-
                     return RedirectToAction("Index", "Admin");
                 }
                 else

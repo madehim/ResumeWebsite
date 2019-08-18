@@ -1,4 +1,10 @@
 ﻿@model ResumeWebSite.Models.Admin.AdminLoginModel
+@{
+    if (ViewBag.RegLink == null)
+    {
+        ViewBag.RegLink = false;
+    }
+}
 
 <div id="adminLogin" class="change-font">
     <form asp-action="Login" asp-controller="Admin" asp-anti-forgery="true">
@@ -21,6 +27,6 @@
     </form>
     @if (@ViewBag.RegLink)
     {
-        <a href="/admin/registration">Регистрация</a>
+    <a href="/admin/registration">Регистрация</a>
     }
 </div>
