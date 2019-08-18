@@ -42,7 +42,7 @@ namespace ResumeServices
                 List<int> retIndexList = new List<int>(3);
                 for (int i = 0; i < 3; i++)
                 {
-                    int rValue = rnd.Next(0, allIndexList.Count - 1);
+                    int rValue = rnd.Next(0, allIndexList.Count);
                     retIndexList.Add(allIndexList[rValue]);
                     allIndexList.RemoveAt(rValue);
                 }
