@@ -82,14 +82,14 @@ namespace ResumeWebSite.Controllers
         [HttpPost]
         public IActionResult Add(ProjectAdminModel projectAdminModel)
         {
-            _project.Add(ToResumeDataProject(projectAdminModel));
+            _project.Add(ToResumeDataProject(projectAdminModel, true));
             return LocalRedirect("/admin");
         }
         [Authorize]
         [HttpPost]
         public IActionResult Change(ProjectAdminModel projectAdminModel)
         {
-            _project.Change(ToResumeDataProject(projectAdminModel));
+            _project.Change(ToResumeDataProject(projectAdminModel, false));
             return LocalRedirect("/admin");
         }
         [Authorize]
@@ -191,21 +191,63 @@ namespace ResumeWebSite.Controllers
                 ViewBag.RegLink = true;
         }
 
-        private Project ToResumeDataProject(ProjectAdminModel projectAdminModel)
+        private Project ToResumeDataProject(ProjectAdminModel projectAdminModel, bool isAdd)
         {
             string[] tagsFromPrAd = projectAdminModel.Tags.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
             string[] picsFromPrAd = projectAdminModel.Pictures.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
             List<Tag> tags = new List<Tag>(tagsFromPrAd.Length);
             List<Picture> pics = new List<Picture>(picsFromPrAd.Length);
-            for (int i = 0; i < tagsFromPrAd.Length; i++)
+
+            if (isAdd)
             {
-                Tag tag = new Tag { TagName = tagsFromPrAd[i] };
-                tags.Add(tag);
+                for (int i = 0; i < tagsFromPrAd.Length; i++)
+                {
+                    Tag tag = new Tag { TagName = tagsFromPrAd[i] };
+                    tags.Add(tag);
+                }
+                for (int i = 0; i < picsFromPrAd.Length; i++)
+                {
+                    Picture pic = new Picture { Link = picsFromPrAd[i] };
+                    pics.Add(pic);
+                }
             }
-            for (int i = 0; i < picsFromPrAd.Length; i++)
+            else
             {
-                Picture pic = new Picture { Link = picsFromPrAd[i] };
-                pics.Add(pic);
+                Project currentProject = _project.Get(projectAdminModel.Id);
+                for (int i = 0; i < tagsFromPrAd.Length; i++)
+                {
+                    if (currentProject.Tags.Any(x => x.TagName == tagsFromPrAd[i]))
+                    {
+                        Tag tag = currentProject.Tags.FirstOrDefault(x => x.TagName == tagsFromPrAd[i]);
+                        tags.Add(tag);
+                    }
+                    else
+                    {
+                        Tag tag = new Tag { TagName = tagsFromPrAd[i] };
+                        tags.Add(tag);
+                    }
+                }
+
+                for (int i = 0; i < picsFromPrAd.Length; i++)
+                {
+                    if (currentProject.Pictures.Any(x => x.Link == picsFromPrAd[i]))
+                    {
+                        Picture pic = currentProject.Pictures.FirstOrDefault(x => x.Link == picsFromPrAd[i]);
+                        pics.Add(pic);
+                    }
+                    else
+                    {
+                        Picture pic = new Picture
+                        {
+                            Link = picsFromPrAd[i]
+                        };
+                        pics.Add(pic);
+                    }
+                }
+
+                currentProject.Tags = tags;
+                currentProject.Pictures = pics;
+                return currentProject;
             }
 
             Project project = new Project

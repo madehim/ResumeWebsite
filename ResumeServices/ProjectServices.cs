@@ -141,10 +141,12 @@ namespace ResumeServices
             _context.SaveChanges();
         }
 
-        public void Change(Project changeProject)
+        public void Change(Project changeProject)//cancer ((
         {
-            Remove(changeProject.Id);
-            Add(changeProject);
+            _context.Update(changeProject);
+
+            //Remove(changeProject.Id);
+            //Add(changeProject);
             _context.SaveChanges();
         }
     }
