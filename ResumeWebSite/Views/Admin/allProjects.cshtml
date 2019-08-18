@@ -1,0 +1,19 @@
+﻿@model ResumeWebSite.Models.Project.ProjectIndexModel
+
+@{Layout = "";}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="~/css/site.min.css" />
+</head>
+<body>
+    <div id="adminAllProjects">
+        @foreach (var project in Model.Projects)
+        {
+            <p class="project-name">@project.Id @project.ProjectName</p>
+        }
+    </div>
+</body>
+</html>

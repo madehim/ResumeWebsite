@@ -365,8 +365,6 @@ body {
         border-right: 1px solid $red-color;
         min-height: 100vh;
         padding-bottom: 20px 0 5px 0;
-        overflow-y: scroll;
-        overflow-x: hidden;
         display: flex;
         flex-direction: column;
 
@@ -374,8 +372,9 @@ body {
             border-bottom: 2px solid $black-color;
         }
 
-        .project-name {
-            border-bottom: 1px solid $black-color;
+        iframe {
+            height: 100%;
+            width: 100%;
         }
     }
 
@@ -414,6 +413,19 @@ body {
                 }
             }
         }
+    }
+}
+
+#adminAllProjects {
+    * {
+        font-family: sans-serif;
+        color: $black-color;
+    }
+
+    background-color: $aqua-color;
+
+    .project-name {
+        border-bottom: 1px solid $black-color;
     }
 }
 

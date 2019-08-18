@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ResumeWebSite.Models.Admin;
+using ResumeWebSite.Models.Project;
 using ResumeData;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
@@ -14,10 +15,12 @@ namespace ResumeWebSite.Controllers
     public class AdminController : Controller
     {
         private IUser _user;
+        private IProject _project;
 
-        public AdminController(IUser user)
+        public AdminController(IUser user, IProject project)
         {
             _user = user;
+            _project = project;
         }
         [HttpGet]
         public IActionResult Login()
@@ -41,6 +44,24 @@ namespace ResumeWebSite.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+        [Authorize]
+        [HttpGet]
+        public IActionResult AllProjects()
+        {
+            var all = _project.GetAll().Select(x => new ProjectDetailModel
+            {
+                Id = x.Id,
+                ProjectName = x.ProjectName
+            });
+
+            var model = new ProjectIndexModel
+            {
+                Projects = all
+            };
+
+            return View(model);
         }
 
         [HttpPost]
