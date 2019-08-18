@@ -1,4 +1,4 @@
-﻿@model ResumeWebSite.Models.Project.ProjectDetailModel
+﻿@model ResumeWebSite.Models.Project.ProjectAdminModel
 
 <div id="adminIndex">
     <div id="leftPart">
@@ -10,36 +10,28 @@
         <form method="post">
             @if (Model != null)
             {
-                string tags = "";
-                foreach (var tag in Model.Tags)
-                {
-                    tags += tag.TagName + ",";
-                }
-                string pics = "";
-                foreach (var pic in Model.Pictures)
-                {
-                    pics += pic.Link + ",";
-                }
-
-                <input type="text" placeholder="Имя" value="@Model.ProjectName" />
-                <textarea placeholder="Описание">@Model.ProjectDescription</textarea>
-                <input type="url" placeholder="Ссылка на гитхаб" value="@Model.ProjectGitHubLink" />
-                <textarea placeholder="Тэги">@tags</textarea>
-                <textarea placeholder="Картинки (ссылки на них)">@pics</textarea>
+                <input asp-for="Id" style="display:none" />
+                <input asp-for="ProjectName" type="text" placeholder="Имя" />
+                <textarea asp-for="ProjectDescription" placeholder="Описание"></textarea>
+                <input asp-for="ProjectGitHubLink" type="url" placeholder="Ссылка на гитхаб" />
+                <textarea asp-for="Tags" placeholder="Тэги"></textarea>
+                <textarea asp-for="Pictures" placeholder="Картинки (ссылки на них)"></textarea>
             }
             else
             {
-                <input type="text" placeholder="Имя" />
-                <textarea placeholder="Описание"></textarea>
-                <input type="url" placeholder="Ссылка на гитхаб" />
-                <textarea placeholder="Тэги"></textarea>
-                <textarea placeholder="Картинки (ссылки на них)"></textarea>
+                <input asp-for="Id" style="display:none" />
+                <input asp-for="ProjectName" type="text" placeholder="Имя" />
+                <textarea asp-for="ProjectDescription" placeholder="Описание"></textarea>
+                <input asp-for="ProjectGitHubLink" type="url" placeholder="Ссылка на гитхаб" />
+                <textarea asp-for="Tags" placeholder="Тэги"></textarea>
+                <textarea asp-for="Pictures" placeholder="Картинки (ссылки на них)"></textarea>
             }
+            <p>Добавление тэгов/картинок через запятую (tag1,tag2,tag3,...).</p>
 
             <div class="buttonBlock">
-                <button type="submit" value="Добавить">Добавить</button>
-                <button type="submit" value="Изменить">Изменить</button>
-                <button type="submit" value="Удалить">Удалить</button>
+                <button type="submit" asp-action="Add" asp-controller="Admin">Добавить</button>
+                <button type="submit" asp-action="Change" asp-controller="Admin">Изменить</button>
+                <button type="submit" asp-action="Delete" asp-controller="Admin">Удалить</button>
             </div>
         </form>
         <h3>Заполнить выбранным проектом из списка</h3>

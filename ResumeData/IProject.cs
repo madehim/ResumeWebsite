@@ -10,7 +10,7 @@ namespace ResumeData
         IEnumerable<Project> GetAllByTag(string tag);
         IEnumerable<Project> GetThreeOrLess();
 
-
+        void Change(Project changeProject);
         void AddTagToProject(int projectId, int tagId);
         void AddVideoToProject(int projectId, Video newVideo);
         void AddPictureToProject(int projectId, Picture newPic);

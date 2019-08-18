@@ -30,15 +30,14 @@ namespace ResumeServices
 
         public IEnumerable<Project> GetThreeOrLess()
         {
-            var all = GetAll();
+            var all = GetAll().ToList();
             if (all.Count() >= 3)
             {
                 Random rnd = new Random(DateTime.UtcNow.Millisecond);
                 IEnumerable<Project> three = null;
-
                 List<int> allIndexList = new List<int>(all.Count());
                 for (int i = 0; i < all.Count(); i++)
-                    allIndexList.Add(i + 1);
+                    allIndexList.Add(all[i].Id);
 
                 List<int> retIndexList = new List<int>(3);
                 for (int i = 0; i < 3; i++)
@@ -49,7 +48,7 @@ namespace ResumeServices
                 }
 
 
-                for (int i = 0; i < retIndexList.Count; i++)//dont work
+                for (int i = 0; i < retIndexList.Count; i++)
                     three = all.Where(x => retIndexList.Contains(x.Id));
 
                 return three;
@@ -68,7 +67,15 @@ namespace ResumeServices
 
         public void Add(Project newProject)
         {
-            _context.Add(newProject);
+            Project project = new Project
+            {
+                Pictures = newProject.Pictures,
+                ProjectDescription = newProject.ProjectDescription,
+                ProjectGitHubLink = newProject.ProjectGitHubLink,
+                ProjectName = newProject.ProjectName,
+                Tags = newProject.Tags
+            };
+            _context.Add(project);
             _context.SaveChanges();
         }
 
@@ -103,8 +110,11 @@ namespace ResumeServices
         public void Remove(int projectId)
         {
             Project remProject = Get(projectId);
-            _context.Remove(remProject);
-            _context.SaveChanges();
+            if (remProject != null)
+            {
+                _context.Remove(remProject);
+                _context.SaveChanges();
+            }
         }
 
         public void RemovePictureFromProject(int projectId, Picture remPic)
@@ -131,6 +141,11 @@ namespace ResumeServices
             _context.SaveChanges();
         }
 
-
+        public void Change(Project changeProject)
+        {
+            Remove(changeProject.Id);
+            Add(changeProject);
+            _context.SaveChanges();
+        }
     }
 }

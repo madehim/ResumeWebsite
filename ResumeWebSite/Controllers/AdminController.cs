@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ResumeWebSite.Models.Admin;
 using ResumeWebSite.Models.Project;
+using ResumeData.Models;
 using ResumeData;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
@@ -9,6 +10,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System;
 
 namespace ResumeWebSite.Controllers
 {
@@ -48,14 +50,25 @@ namespace ResumeWebSite.Controllers
                 var project = _project.Get(id);
                 if (project != null)
                 {
-                    var model = new ProjectDetailModel
+                    string pics = "";
+                    foreach (var pic in project.Pictures)
+                    {
+                        pics += pic.Link + ",";
+                    }
+                    string tags = "";
+                    foreach (var tag in project.Tags)
+                    {
+                        tags += tag.TagName + ",";
+                    }
+
+                    var model = new ProjectAdminModel
                     {
                         Id = project.Id,
                         ProjectName = project.ProjectName,
                         ProjectDescription = project.ProjectDescription,
                         ProjectGitHubLink = project.ProjectGitHubLink,
-                        Pictures = project.Pictures,
-                        Tags = project.Tags
+                        Pictures = pics,
+                        Tags = tags
                     };
 
                     return View(model);
@@ -63,6 +76,28 @@ namespace ResumeWebSite.Controllers
             }
             return View();
 
+        }
+
+        [Authorize]
+        [HttpPost]
+        public IActionResult Add(ProjectAdminModel projectAdminModel)
+        {
+            _project.Add(ToResumeDataProject(projectAdminModel));
+            return LocalRedirect("/admin");
+        }
+        [Authorize]
+        [HttpPost]
+        public IActionResult Change(ProjectAdminModel projectAdminModel)
+        {
+            _project.Change(ToResumeDataProject(projectAdminModel));
+            return LocalRedirect("/admin");
+        }
+        [Authorize]
+        [HttpPost]
+        public IActionResult Delete(ProjectAdminModel projectAdminModel)
+        {
+            _project.Remove(projectAdminModel.Id);
+            return LocalRedirect("/admin");
         }
 
         [Authorize]
@@ -154,6 +189,35 @@ namespace ResumeWebSite.Controllers
             ViewBag.RegLink = false;
             if (_user.GetAll().Count() == 0)
                 ViewBag.RegLink = true;
+        }
+
+        private Project ToResumeDataProject(ProjectAdminModel projectAdminModel)
+        {
+            string[] tagsFromPrAd = projectAdminModel.Tags.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+            string[] picsFromPrAd = projectAdminModel.Pictures.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+            List<Tag> tags = new List<Tag>(tagsFromPrAd.Length);
+            List<Picture> pics = new List<Picture>(picsFromPrAd.Length);
+            for (int i = 0; i < tagsFromPrAd.Length; i++)
+            {
+                Tag tag = new Tag { TagName = tagsFromPrAd[i] };
+                tags.Add(tag);
+            }
+            for (int i = 0; i < picsFromPrAd.Length; i++)
+            {
+                Picture pic = new Picture { Link = picsFromPrAd[i] };
+                pics.Add(pic);
+            }
+
+            Project project = new Project
+            {
+                Id = projectAdminModel.Id,
+                ProjectName = projectAdminModel.ProjectName,
+                ProjectDescription = projectAdminModel.ProjectDescription,
+                ProjectGitHubLink = projectAdminModel.ProjectGitHubLink,
+                Pictures = pics,
+                Tags = tags
+            };
+            return project;
         }
     }
 }
