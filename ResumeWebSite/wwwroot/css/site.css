@@ -219,6 +219,51 @@ body {
     #adminLogin form div, #adminRegistration form div {
       padding: 10px 0; }
 
+#adminIndex {
+  display: flex; }
+  #adminIndex * {
+    font-family: sans-serif;
+    color: #000000; }
+  #adminIndex #leftPart {
+    flex-basis: 30vw;
+    background-color: #00acac;
+    border-right: 1px solid #c70000;
+    min-height: 100vh;
+    padding-bottom: 20px 0 5px 0;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column; }
+    #adminIndex #leftPart h3 {
+      border-bottom: 2px solid #000000; }
+    #adminIndex #leftPart .project-name {
+      border-bottom: 1px solid #000000; }
+  #adminIndex #rightPart {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 70vw;
+    background-color: #acacac;
+    padding-bottom: 20px 5px; }
+    #adminIndex #rightPart form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center; }
+      #adminIndex #rightPart form input, #adminIndex #rightPart form textarea, #adminIndex #rightPart form button {
+        margin-bottom: 20px;
+        font-size: 0.9em; }
+      #adminIndex #rightPart form textarea, #adminIndex #rightPart form input {
+        width: 80%;
+        max-width: 80%;
+        margin-left: auto;
+        margin-right: auto; }
+      #adminIndex #rightPart form .button-block {
+        display: flex;
+        justify-content: center; }
+        #adminIndex #rightPart form .button-block button {
+          width: 40px;
+          margin: 10px;
+          padding: 5px; }
+
 @media screen and (max-width: 1000px) {
   #homeAbout {
     width: 75vw; }
