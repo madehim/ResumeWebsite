@@ -2,15 +2,12 @@
 using Microsoft.AspNetCore.Mvc;
 using ResumeWebSite.Models.Admin;
 using ResumeData;
-using System;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-using System.Security.Cryptography;
-using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 
 namespace ResumeWebSite.Controllers
 {
@@ -27,9 +24,7 @@ namespace ResumeWebSite.Controllers
         {
             if (User.Identity.IsAuthenticated)
                 return LocalRedirect("/Admin/Index");
-            ViewBag.RegLink = false;
-            if (_user.GetAll().Count() == 0)
-                ViewBag.RegLink = true;
+            RegLink();
 
             return View();
         }
@@ -65,6 +60,7 @@ namespace ResumeWebSite.Controllers
                 }
                 ModelState.AddModelError("", "Некорректные логин и(или) пароль");
             }
+            RegLink();
             return View(model);
         }
 
@@ -113,16 +109,11 @@ namespace ResumeWebSite.Controllers
             return Redirect("/Home");
         }
 
-
-        private string Hashing(byte[] salt, string password)
+        private void RegLink()
         {
-            return Convert.ToBase64String(KeyDerivation.Pbkdf2(
-                        password: password,
-                        salt: salt,
-                        prf: KeyDerivationPrf.HMACSHA1,
-                        iterationCount: 10000,
-                        numBytesRequested: 256 / 8));
+            ViewBag.RegLink = false;
+            if (_user.GetAll().Count() == 0)
+                ViewBag.RegLink = true;
         }
-
     }
 }
