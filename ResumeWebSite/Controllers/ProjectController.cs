@@ -50,24 +50,29 @@ namespace ResumeWebSite.Controllers
 
         public IActionResult Tag(string id)
         {
-            if (id == "CSharp")
-                id = "C#";
-            var projects = _project.GetAllByTag(id)
-                .Select(project => new ProjectDetailModel
-                {
-                    Id = project.Id,
-                    ProjectName = project.ProjectName,
-                    Pictures = project.Pictures,
-                    Tags = project.Tags
-                });
-
-            var model = new ProjectIndexModel()
+            if (id != null)
             {
-                Projects = projects
-            };
 
-            ViewBag.Tag = id;
-            return View(model);
+                if (id == "CSharp")
+                    id = "C#";
+                var projects = _project.GetAllByTag(id)
+                    .Select(project => new ProjectDetailModel
+                    {
+                        Id = project.Id,
+                        ProjectName = project.ProjectName,
+                        Pictures = project.Pictures,
+                        Tags = project.Tags
+                    });
+
+                var model = new ProjectIndexModel()
+                {
+                    Projects = projects
+                };
+
+                ViewBag.Tag = id;
+                return View(model);
+            }
+            return LocalRedirect("/project");
         }
 
     }
