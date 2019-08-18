@@ -1,4 +1,4 @@
-﻿
+﻿@model ResumeWebSite.Models.Project.ProjectDetailModel
 
 <div id="adminIndex">
     <div id="leftPart">
@@ -18,6 +18,11 @@
                 <button type="submit" value="Изменить">Изменить</button>
                 <button type="submit" value="Удалить">Удалить</button>
             </div>
+        </form>
+        <h3>Заполнить выбранным проектом из списка</h3>
+        <form method="get">
+            <input type="text" placeholder="Id" />
+            <button type="submit">Заполнить</button>
         </form>
     </div>
 </div>

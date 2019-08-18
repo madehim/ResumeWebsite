@@ -246,22 +246,26 @@ body {
     #adminIndex #rightPart form {
       display: flex;
       flex-direction: column;
-      justify-content: center; }
+      justify-content: center;
+      align-items: center; }
       #adminIndex #rightPart form input, #adminIndex #rightPart form textarea, #adminIndex #rightPart form button {
         margin-bottom: 20px;
         font-size: 0.9em; }
       #adminIndex #rightPart form textarea, #adminIndex #rightPart form input {
         width: 80%;
-        max-width: 80%;
+        max-width: 60vw;
         margin-left: auto;
-        margin-right: auto; }
+        margin-right: auto;
+        text-align: start; }
       #adminIndex #rightPart form .button-block {
         display: flex;
         justify-content: center; }
-        #adminIndex #rightPart form .button-block button {
-          width: 40px;
-          margin: 10px;
-          padding: 5px; }
+      #adminIndex #rightPart form button {
+        width: auto;
+        max-width: 150px;
+        margin: 10px;
+        padding: 5px;
+        cursor: pointer; }
 
 #adminAllProjects {
   background-color: #00acac; }

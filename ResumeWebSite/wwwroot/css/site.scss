@@ -389,6 +389,7 @@ body {
             display: flex;
             flex-direction: column;
             justify-content: center;
+            align-items: center;
 
             input, textarea, button {
                 margin-bottom: 20px;
@@ -397,20 +398,23 @@ body {
 
             textarea, input {
                 width: 80%;
-                max-width: 80%;
+                max-width: 60vw;
                 margin-left: auto;
                 margin-right: auto;
+                text-align: start;
             }
 
             .button-block {
                 display: flex;
                 justify-content: center;
+            }
 
-                button {
-                    width: 40px;
-                    margin: 10px;
-                    padding: 5px;
-                }
+            button {
+                width: auto;
+                max-width: 150px;
+                margin: 10px;
+                padding: 5px;
+                cursor: pointer;
             }
         }
     }
