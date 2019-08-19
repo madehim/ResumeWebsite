@@ -16,24 +16,24 @@
             <!--Razor here-->
             @foreach (var project in Model.Projects)
             {
-                <div class="project-container">
-                    @{var linkToProject = "/project/detail/" + project.Id;}
-                    <a href="@linkToProject">
-                        <h5>@project.ProjectName</h5>
-                        <div class="project-preview">
-                            @{
+            <div class="project-container">
+                @{var linkToProject = "/project/detail/" + project.Id;}
+                <a href="@linkToProject">
+                    <h5>@project.ProjectName</h5>
+                    <div class="project-preview">
+                        @{
                                 var picture = project.Pictures.FirstOrDefault();
                                 if (picture != null)
                                 {
-                                    <img src="@picture.Link " alt="@project.ProjectName" />
+                            <img src="@picture.Link " alt="@project.ProjectName" />
                                 }
-                            }
-                        </div>
-                    </a>
-                    @if (project.Tags != null)
+                        }
+                    </div>
+                </a>
+                @if (project.Tags != null)
                     {
-                        <div class="project-tags-container">
-                            @foreach (var tag in project.Tags)
+                <div class="project-tags-container">
+                    @foreach (var tag in project.Tags)
                             {
                                 var byTagLink = "";
                                 if (tag.TagName != "C#")
@@ -44,11 +44,11 @@
                                 {
                                     byTagLink = "/project/tag/CSharp";
                                 }
-                                <a href="@byTagLink"><span>@tag.TagName</span></a>
+                    <a href="@byTagLink"><span>@tag.TagName</span></a>
                             }
-                        </div>
-                    }
                 </div>
+                    }
+            </div>
             }
         </div>
         <a href="/project" class="link-in-text"><input type="button" value="Посмотреть все" /></a>
