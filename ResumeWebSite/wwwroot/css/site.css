@@ -79,7 +79,11 @@ body {
         font-size: 1em; }
 
 #homeIndex #title {
-  height: 40vh; }
+  height: 25vh;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column; }
 
 #homeIndex #projectsWindow {
   background-color: #00acac;
@@ -189,12 +193,12 @@ body {
     width: 80%;
     margin: auto; }
   #projectDetail a {
-    color: #000000; }
+    color: #c70000; }
     #projectDetail a i {
       padding: 5px;
       border: 1px solid #0000af; }
   #projectDetail a:hover i {
-    background-color: #c70000;
+    background-color: #000000;
     border: 1px solid #000000; }
   #projectDetail .project-tags-container {
     display: flex;

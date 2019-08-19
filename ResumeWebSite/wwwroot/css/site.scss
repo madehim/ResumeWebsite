@@ -134,7 +134,11 @@ body {
 
 #homeIndex {
     #title {
-        height: 40vh;
+        height: 25vh;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        flex-direction: column;
     }
 
     #projectsWindow {
@@ -298,7 +302,7 @@ body {
     }
 
     a {
-        color: $black-color;
+        color: $red-color;
 
         i {
             padding: 5px;
@@ -308,7 +312,7 @@ body {
 
     a:hover {
         i {
-            background-color: $red-color;
+            background-color: $black-color;
             border: 1px solid $black-color;
         }
     }
