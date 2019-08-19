@@ -247,6 +247,9 @@ namespace ResumeWebSite.Controllers
 
                 currentProject.Tags = tags;
                 currentProject.Pictures = pics;
+                currentProject.ProjectName = projectAdminModel.ProjectName;
+                currentProject.ProjectGitHubLink = projectAdminModel.ProjectGitHubLink;
+                currentProject.ProjectDescription = projectAdminModel.ProjectDescription;
                 return currentProject;
             }
 
