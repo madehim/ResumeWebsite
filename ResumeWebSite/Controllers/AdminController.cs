@@ -193,7 +193,7 @@ namespace ResumeWebSite.Controllers
 
         private Project ToResumeDataProject(ProjectAdminModel projectAdminModel, bool isAdd)
         {
-            string[] tagsFromPrAd = projectAdminModel.Tags.Split(new char[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries).Distinct().ToArray();
+            string[] tagsFromPrAd = projectAdminModel.Tags.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries).Select(x => x.Trim()).Distinct().ToArray();
             string[] picsFromPrAd = projectAdminModel.Pictures.Split(new char[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries).Distinct().ToArray();
             List<Tag> tags = new List<Tag>(tagsFromPrAd.Length);
             List<Picture> pics = new List<Picture>(picsFromPrAd.Length);
